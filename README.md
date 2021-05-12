@@ -77,6 +77,59 @@ Please select pod in <single>: 1
 root@nginx-f89759699-5lqtx:/#
 ```
 
+-----
+
+## Installation
+**Caution**: It support only 'BASH' Shell above 5.0.  
+- As a `krew` which kubernetes plugins 
+- Manual installation
+
+### krew as a custom-index
+You can install and use [Krew](https://github.com/kubernetes-sigs/krew/) kubectl
+plugin manager to get `kubectxon` 
+```bash
+$ kubectl krew index add cix https://github.com/sysnet4admin/custom-index.git
+$ kubectl krew install cix/conn
+```
+
+After installing, the tool will be available as `kubectl conn`.
+I recommend to alias `kubeconn` like below: 
+
+```bash
+$ echo "alias kubeconn='kubectl conn'" >> ~/.bashrc
+$ source ~/.bashrc
+```
+
+
+### Manual
+
+Since `kubeconn` is written in Bash, you should be able to install
+them to any POSIX environment that has Bash installed.
+
+- Download the `kubectxon` scripts.
+- Either:
+  - save them all to somewhere in your `PATH`,
+  - or save them to a directory, then create symlinks to `kubectx`/`kubens` from
+    somewhere in your `PATH`, like `/usr/local/bin`
+- Make `kubectxon` executable (`chmod +x ...`)
+```bash
+$ git clone https://github.com/sysnet4admin/kubeconn.git
+$ cd kubeconn
+$ ./kubeconn
+```
+
+**OR**
+
+```bash
+$ curl -O https://raw.githubusercontent.com/sysnet4admin/kubeconn/main/kubeconn
+$ chmod +x kubeconn
+$ ./kubeconn
+```
+
+-----
+
+
+
 
 ## Default bounce shell but bash can run if pod support it 
 ```sh
